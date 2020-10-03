@@ -1,7 +1,7 @@
 # LAMA: LAnguage Model Analysis
 <img align="middle" src="img/logo.png" height="256" alt="LAMA">
 
-LAMA ia a probe for analyzing the factual and commonsense knowledge contained in pretrained language models. <br>
+LAMA is a probe for analyzing the factual and commonsense knowledge contained in pretrained language models. <br>
 #### The dataset for the LAMA probe is available at https://dl.fbaipublicfiles.com/LAMA/data.zip <br>
 LAMA contains a set of connectors to pretrained language models. <br>
 LAMA exposes a transparent and unique interface to use:
@@ -16,18 +16,24 @@ Actually, LAMA is also a beautiful animal.
 
 ## Reference:
 
-The LAMA probe is described in the following paper:
+The LAMA probe is described in the following papers:
 
 ```bibtex
 @inproceedings{petroni2019language,
   title={Language Models as Knowledge Bases?},
   author={F. Petroni, T. Rockt{\"{a}}schel, A. H. Miller, P. Lewis, A. Bakhtin, Y. Wu and S. Riedel},
-  booktitle={To Appear in: Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP), 2019},
+  booktitle={In: Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP), 2019},
   year={2019}
 }
-```
 
-Preprint version: https://arxiv.org/abs/1909.01066
+@inproceedings{petroni2020how,
+  title={How Context Affects Language Models' Factual Predictions},
+  author={Fabio Petroni and Patrick Lewis and Aleksandra Piktus and Tim Rockt{\"a}schel and Yuxiang Wu and Alexander H. Miller and Sebastian Riedel},
+  booktitle={Automated Knowledge Base Construction},
+  year={2020},
+  url={https://openreview.net/forum?id=025X0zPfn}
+}
+```
 
 ## The LAMA probe
 
@@ -68,7 +74,7 @@ The script will create and populate a _pre-trained_language_models_ folder.
 If you are interested in a particular model please edit the script.
 
 
-### 4. Run the experiemnts
+### 4. Run the experiments
 
 ```bash
 python scripts/run_experiments.py
@@ -76,6 +82,14 @@ python scripts/run_experiments.py
 
 results will be logged in _output/_ and  _last_results.csv_.
 
+## Other versions of LAMA
+
+### LAMA-UHN
+
+This repository also provides a script (`scripts/create_lama_uhn.py`) to create the data used in (Poerner et al., 2019).
+
+### Negated-LAMA
+This repository also gives the option to evalute how pretrained language models handle negated probes (Kassner et al., 2019), set the flag `use_negated_probes` in `scripts/run_experiments.py`. Also, you should use this version of the LAMA probe https://dl.fbaipublicfiles.com/LAMA/negated_data.tar.gz
 
 ## What else can you do with LAMA?
 
@@ -139,6 +153,7 @@ python lama/eval_generation.py  \
 --lm "bert"  \
 --t "The theory of relativity was developed by [MASK] ."
 ```
+
 
 ## Install LAMA with pip
 
@@ -243,7 +258,11 @@ If the experiments fail on GPU memory allocation, try reducing batch size.
 * [https://github.com/pytorch/fairseq](https://github.com/pytorch/fairseq)
 
 
-## References
+## Other References
+
+- __(Kassner et al., 2019)__ Nora Kassner, Hinrich Schütze. _Negated LAMA: Birds cannot fly_. arXiv preprint arXiv:1911.03343, 2019.
+
+- __(Poerner et al., 2019)__ Nina Poerner, Ulli Waltinger, and Hinrich Schütze. _BERT is Not a Knowledge Base (Yet): Factual Knowledge vs. Name-Based Reasoning in Unsupervised QA_. arXiv preprint arXiv:1911.03681, 2019.
 
 - __(Dai et al., 2019)__ Zihang Dai, Zhilin Yang, Yiming Yang, Jaime G. Carbonell, Quoc V. Le, and Ruslan Salakhutdi. _Transformer-xl: Attentive language models beyond a fixed-length context_. CoRR, abs/1901.02860.
 
